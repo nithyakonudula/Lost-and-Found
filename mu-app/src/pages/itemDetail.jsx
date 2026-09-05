@@ -46,9 +46,9 @@ export default function ItemDetail() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-50">
+      <main className="theme-page min-h-screen">
         <div className="mx-auto max-w-xl px-6 py-20 text-center">
-          <p className="text-gray-500">
+          <p className="theme-muted">
             Loading item details...
           </p>
         </div>
@@ -62,25 +62,25 @@ export default function ItemDetail() {
 
   if (!item) {
     return (
-      <main className="min-h-screen bg-gray-50">
+      <main className="theme-page min-h-screen">
         <div className="mx-auto max-w-xl px-6 py-20 text-center">
 
           <Package
             size={55}
-            className="mx-auto mb-5 text-gray-300"
+            className="theme-accent mx-auto mb-5 opacity-50"
           />
 
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="theme-text text-2xl font-bold">
             Item Not Found
           </h2>
 
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="theme-muted mt-2 text-sm">
             No matching product was found.
           </p>
 
           <Link
             to="/"
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
+            className="theme-button mt-6 inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-medium text-white transition"
           >
             <ArrowLeft size={17} />
             Back to Products
@@ -96,7 +96,7 @@ export default function ItemDetail() {
   // -----------------------------
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="theme-page min-h-screen">
 
       <div className="mx-auto max-w-6xl px-6 py-10">
 
@@ -104,7 +104,7 @@ export default function ItemDetail() {
 
         <Link
           to="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-black"
+          className="theme-muted mb-8 inline-flex items-center gap-2 text-sm font-medium transition hover:brightness-75"
         >
           <ArrowLeft size={18} />
           Back to Products
@@ -113,7 +113,7 @@ export default function ItemDetail() {
 
         {/* Main Details Card */}
 
-        <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+        <div className="theme-surface theme-border overflow-hidden rounded-3xl border shadow-sm">
 
           <div className="grid lg:grid-cols-2">
 
@@ -122,7 +122,7 @@ export default function ItemDetail() {
             {/* Product Image */}
             {/* -------------------------------- */}
 
-            <div className="h-80 bg-gray-100 lg:h-full lg:min-h-[550px]">
+            <div className="theme-soft-surface h-80 lg:h-full lg:min-h-[550px]">
 
               <img
                 src={item.image}
@@ -157,14 +157,14 @@ export default function ItemDetail() {
 
               {/* Product Name */}
 
-              <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+              <h1 className="theme-text text-3xl font-bold md:text-4xl">
                 {item.name}
               </h1>
 
 
               {/* Description */}
 
-              <p className="mt-4 leading-7 text-gray-600">
+              <p className="theme-muted mt-4 leading-7">
                 This item has been listed on the Lost & Found
                 platform. If this item belongs to you, please
                 contact the person using the contact information
@@ -176,29 +176,29 @@ export default function ItemDetail() {
               {/* Product Information */}
               {/* -------------------------------- */}
 
-              <div className="mt-8 space-y-5 border-t border-gray-100 pt-7">
+              <div className="theme-border mt-8 space-y-5 border-t pt-7">
 
 
                 {/* Product ID */}
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100">
+                  <div className="theme-soft-surface flex h-11 w-11 items-center justify-center rounded-xl">
 
                     <Package
                       size={20}
-                      className="text-gray-600"
+                      className="theme-accent"
                     />
 
                   </div>
 
                   <div>
 
-                    <p className="text-xs text-gray-400">
+                    <p className="theme-muted text-xs">
                       Product ID
                     </p>
 
-                    <p className="mt-1 font-medium text-gray-900">
+                    <p className="theme-text mt-1 font-medium">
                       {item.id}
                     </p>
 
@@ -211,22 +211,22 @@ export default function ItemDetail() {
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100">
+                  <div className="theme-soft-surface flex h-11 w-11 items-center justify-center rounded-xl">
 
                     <Package
                       size={20}
-                      className="text-gray-600"
+                      className="theme-accent"
                     />
 
                   </div>
 
                   <div>
 
-                    <p className="text-xs text-gray-400">
+                    <p className="theme-muted text-xs">
                       Product Name
                     </p>
 
-                    <p className="mt-1 font-medium text-gray-900">
+                    <p className="theme-text mt-1 font-medium">
                       {item.name}
                     </p>
 
@@ -239,22 +239,22 @@ export default function ItemDetail() {
 
                 <div className="flex items-center gap-4">
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100">
+                  <div className="theme-soft-surface flex h-11 w-11 items-center justify-center rounded-xl">
 
                     <Phone
                       size={20}
-                      className="text-gray-600"
+                      className="theme-accent"
                     />
 
                   </div>
 
                   <div>
 
-                    <p className="text-xs text-gray-400">
+                    <p className="theme-muted text-xs">
                       Contact Number
                     </p>
 
-                    <p className="mt-1 font-medium text-gray-900">
+                    <p className="theme-text mt-1 font-medium">
                       {item.contact}
                     </p>
 
@@ -270,11 +270,11 @@ export default function ItemDetail() {
               {/* Contact Section */}
               {/* -------------------------------- */}
 
-              <div className="mt-8 rounded-2xl bg-gray-50 p-5">
+              <div className="theme-soft-surface mt-8 rounded-2xl p-5">
 
                 <div className="flex items-center gap-3">
 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
+                  <div className="theme-surface flex h-10 w-10 items-center justify-center rounded-full">
 
                     <User size={18} />
 
@@ -282,11 +282,11 @@ export default function ItemDetail() {
 
                   <div>
 
-                    <h2 className="font-semibold text-gray-900">
+                    <h2 className="theme-text font-semibold">
                       Contact Owner
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="theme-muted text-sm">
                       If this is your item, contact the person
                       who reported it.
                     </p>
@@ -300,7 +300,7 @@ export default function ItemDetail() {
 
                 <a
                   href={`tel:${item.contact}`}
-                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 font-medium text-white transition hover:bg-gray-800"
+                  className="theme-button mt-5 flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-medium text-white transition"
                 >
 
                   <Phone size={18} />

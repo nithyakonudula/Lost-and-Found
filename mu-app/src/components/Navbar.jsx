@@ -78,10 +78,13 @@ function Navbar({ theme, appearance, onThemeChange, onCycleTheme, onToggleAppear
             {appearance === "light" ? <Moon size={16} /> : <Sun size={16} />}
           </button>
 
-          <button className="theme-button flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition">
+          <a
+            href="#report"
+            className="theme-button flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition"
+          >
             <PlusCircle size={17} />
             <span className="hidden sm:block">Report Item</span>
-          </button>
+          </a>
 
         </div>
       </div>
