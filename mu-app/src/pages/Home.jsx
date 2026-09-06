@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Package, Plus, Send } from "lucide-react";
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { normalizeItem } from "../lib/normalizeItem";
+import mockItems from "../data/mockitems";
+
+const fallbackItems = (mockItems || []).map((item, index) => normalizeItem(item, index));
 
 export default function Home() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(fallbackItems);
   const [loading, setLoading] = useState(isSupabaseConfigured);
-  const [error, setError] = useState(
-    isSupabaseConfigured
-      ? ""
-      : "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY (or VITE_SUPABASE_ANON_KEY) to .env.local.",
-  );
+  const [error, setError] = useState("");
   const [reportMessage, setReportMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [report, setReport] = useState({
@@ -23,6 +22,9 @@ export default function Home() {
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
+      setItems(fallbackItems);
+      setLoading(false);
+      setError("");
       return;
     }
 
@@ -35,8 +37,10 @@ export default function Home() {
       if (error) {
         console.error("Error fetching items:", error);
         setError(`Unable to load Supabase items: ${error.message}`);
+        setItems(fallbackItems);
       } else {
         setItems((data || []).map((item, index) => normalizeItem(item, index)));
+        setError("");
       }
 
       setLoading(false);

@@ -8,15 +8,23 @@ import {
 } from "lucide-react";
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { normalizeItem } from "../lib/normalizeItem";
+import mockItems from "../data/mockitems";
 
 export default function ItemDetail() {
   const { id } = useParams();
 
-  const [item, setItem] = useState(null);
+  const getFallbackItem = (targetId) => {
+    const fallback = (mockItems || []).find((item) => String(item.id) === String(targetId));
+    return fallback ? normalizeItem(fallback, targetId) : null;
+  };
+
+  const [item, setItem] = useState(() => getFallbackItem(id));
   const [loading, setLoading] = useState(isSupabaseConfigured);
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
+      setItem(getFallbackItem(id));
+      setLoading(false);
       return;
     }
 
@@ -29,7 +37,7 @@ export default function ItemDetail() {
 
       if (error) {
         console.error("Error fetching item:", error);
-        setItem(null);
+        setItem(getFallbackItem(id));
       } else {
         setItem(normalizeItem(data, id));
       }

@@ -41,7 +41,7 @@ function App() {
 
     window.addEventListener("keydown", handleThemeShortcut);
     return () => window.removeEventListener("keydown", handleThemeShortcut);
-  });
+  }, [theme, appearance]);
 
   return (
     <BrowserRouter>
